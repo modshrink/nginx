@@ -21,7 +21,6 @@ server {
 
 	#rewrite /wp-admin$ $scheme://$host$uri/ permanent;
 
-
 	location ~* ^.+.(jpg|jpeg|gif|png|css|js|flv|swf|ico|xml)$ {
 		access_log  off;
 		expires 30d;
@@ -65,7 +64,6 @@ server {
 		proxy_cache_key $scheme$proxy_host$uri$is_args$args;
 		proxy_cache_valid  200 1d;
 
-
 		if ($request_method != GET) {
 			set $do_not_cache 1;
 		}
@@ -93,7 +91,6 @@ server {
 		if ($request_uri ~ "^/wordpress/wp-login.php.*"){
 			set $do_not_cache 1;
 		}
-
 }
 
 	if ($http_user_agent ~* '(DoCoMo|UP.Browser|SoftBank|WILLCOM|emobile|iPhone|iPod|Android.*Mobile)') {
@@ -112,8 +109,6 @@ server {
 	open_file_cache_valid 30s;
 	open_file_cache_min_uses 2;
 	open_file_cache_errors on;
-
-	
 }
 
 server {
@@ -148,6 +143,4 @@ server {
 		fastcgi_pass_header "X-Accel-Redirect";
 		fastcgi_pass_header "X-Accel-Expires";
 	}
-
-
 }
